@@ -1,0 +1,22 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "This is a backend system for user management",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VivekKumar432/KRUM-Workshop.git"
+  },
+  "author": "KRMU",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VivekKumar432/KRUM-Workshop/issues"
+  },
+  "homepage": "https://github.com/VivekKumar432/KRUM-Workshop#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
