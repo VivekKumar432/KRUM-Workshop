@@ -1,10 +1,12 @@
 const express = require('express');
-const mongodb = require('./config/database')
+const dotenv = require('dotenv').config();
+const mongodb = require('./config/database');
+const cors = require('cors');
 const app = express();
 app.use(express.json());
 const userRoutes = require('./routes/userRoute')
 
-
+app.use(cors());
 app.use('/user', userRoutes);
 // app.get('/', (req,res)=>{
 //     res.send('Hello this is the Homepage');
@@ -26,6 +28,7 @@ app.use('/user', userRoutes);
 
 
 
-app.listen( 5000, ()=>{
-    console.log("Serer is running on PORT no 5000")
+const PORT = process.env.PORT;
+app.listen(PORT, ()=>{
+    console.log(`Serer is running on PORT no ${PORT}`)
 });

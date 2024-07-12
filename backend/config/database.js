@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
-
-module.exports = mongoose.connect("mongodb+srv://piebytwo014:piebytwo014@weekend.lqt4yco.mongodb.net/?retryWrites=true&w=majority&appName=weekend", {
+const db_url = process.env.DATABASE_STRING;
+console.log("this is the url",db_url);
+module.exports = mongoose.connect(process.env.DATABASE_STRING, {
     useNewUrlParser:true,
     useUnifiedTopology:true
 }).then(()=>{
