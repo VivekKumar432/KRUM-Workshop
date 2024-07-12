@@ -1,15 +1,17 @@
 const UserModel = require("../models/userModel");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 const loginController = async (req, res) => {
   try {
     const { email, password } = req.body; // object destructuring
 
     const resposne = await UserModel.findOne({ email: email });
 
-    const userPwd = resposne.password;
+    const encryptedPwd = resposne.password;
+
     console.log("this is the pwd", userPwd);
     console.log("this is the user", resposne);
-    if (userPwd === password) {
+    if (await bcrypt.compare(password, encryptedPwd)) {
       const key = process.env.JWT_KEY;
       const loginToken = jwt.sign(
         {
@@ -25,7 +27,7 @@ const loginController = async (req, res) => {
       res.cookie("sessionToken", loginToken);
       console.log("Cookie added");
     }
-    
+
     if (!resposne) {
       console.log("Error in login", resposne);
       return res.status(401).json({ message: "Error during Login" });
