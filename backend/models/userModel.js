@@ -1,4 +1,3 @@
-const { Straighten } = require('@mui/icons-material');
 const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({

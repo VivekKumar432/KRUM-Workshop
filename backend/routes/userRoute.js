@@ -4,11 +4,13 @@ const userRouter = express.Router();
 const {createUser} = require("../controllers/userController");
 const {loginController} = require("../controllers/loginController");
 const logoutController = require('../controllers/logoutController');
+const checkLoginStatus = require('../middleware/checkLoginStatus');
 
 
 // userRouter.post("/create-user", userController.createUser )
 userRouter.post("/create-user", createUser )
 userRouter.post("/login", loginController)
 userRouter.post("/logout", logoutController)
+userRouter.get("/check-login", checkLoginStatus)
 
 module.exports = userRouter;

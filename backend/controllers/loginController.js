@@ -9,7 +9,7 @@ const loginController = async (req, res) => {
 
     const encryptedPwd = resposne.password;
 
-    console.log("this is the pwd", userPwd);
+    console.log("this is the pwd", password);
     console.log("this is the user", resposne);
     if (await bcrypt.compare(password, encryptedPwd)) {
       const key = process.env.JWT_KEY;
@@ -17,13 +17,14 @@ const loginController = async (req, res) => {
         {
           id: resposne.id,
           name: resposne.name,
-          username: resposne.usernamem,
+          username: resposne.username,
         },
         key,
         {
           expiresIn: "1h",
         }
       );
+      console.log("this isthe session token",loginToken);
       res.cookie("sessionToken", loginToken);
       console.log("Cookie added");
     }
