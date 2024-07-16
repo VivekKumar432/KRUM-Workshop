@@ -60,16 +60,14 @@ pipeline {
             }
         }
 
-    post{
+    }
+     post{
         always {
             echo "Pipeline finished"
         }
         failure{
             echo "Pipeline failed"
         }
-    }
-
-
     }
 
 }
