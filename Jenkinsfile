@@ -27,7 +27,7 @@ pipeline {
         stage('Build Frontend') {
             steps {
                 script {
-                    def frontendPath = 'frontend'
+                    def frontendPath = 'frontend/user_management'
                     if(fileExists(frontendPath)){
                         //bat-windows linux/macos - sh
                         bat "docker build -t ${frontendImage}:latest ${frontendPath}" //build the img
