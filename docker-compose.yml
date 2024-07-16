@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: frontend
+    ports:
+      -"3000:3000"
+    depends_on:
+      - backend
+
+  backend:
+    build: backend
+    ports:
+      -"4545:4545"
+    environment:
+      MONGO_URI: mongodb+srv://piebytwo014:admin123@cluster0.5fdodhx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+    depends_on:
+      - mongo
+  
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
