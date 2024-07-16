@@ -1,0 +1,43 @@
+body{
+    background-color: aquamarine;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width: 800px;
+    margin: auto;
+}
+
+h1{
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+input{
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid wheat;
+    border-radius: 30px;
+}
+
+button{
+    background-color: red;
+    color: white;
+    padding:  10px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover{
+background-color: green;
+}
