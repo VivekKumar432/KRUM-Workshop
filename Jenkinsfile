@@ -14,6 +14,7 @@ pipeline {
                 script {
                     def backendPath = 'backend'
                     if (fileExists(backendPath)) {
+                        echo "Building backend image"
                         bat "docker build -t ${backendImage}:latest ${backendPath}" // Build the image
                         bat "docker tag ${backendImage}:latest thepurpleaxe/${backendImage}:latest" // Tag image
                     } else {
@@ -28,6 +29,7 @@ pipeline {
                 script {
                     def frontendPath = 'frontend'
                     if (fileExists(frontendPath)) {
+                        echo "Building frontend image"
                         bat "docker build -t ${frontendImage}:latest ${frontendPath}" // Build the image
                         bat "docker tag ${frontendImage}:latest thepurpleaxe/${frontendImage}:latest" // Tag image
                     } else {
@@ -40,8 +42,8 @@ pipeline {
         stage('Push Backend') {
             steps {
                 script {
+                    echo "Preparing to push backend image"
                     docker.withRegistry(dockerRegistry, dockerCreds) {
-                        echo "Pushing backend image to Docker Hub"
                         bat "docker push thepurpleaxe/${backendImage}:latest"
                     }
                 }
@@ -51,8 +53,8 @@ pipeline {
         stage('Push Frontend') {
             steps {
                 script {
+                    echo "Preparing to push frontend image"
                     docker.withRegistry(dockerRegistry, dockerCreds) {
-                        echo "Pushing frontend image to Docker Hub"
                         bat "docker push thepurpleaxe/${frontendImage}:latest"
                     }
                 }
