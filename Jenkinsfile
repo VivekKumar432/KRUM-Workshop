@@ -44,7 +44,7 @@ pipeline {
         stage('Push Backend'){
             steps{
                 script{
-                    docker.withRegistry(${dockerRegistry}, ${dockerCreds})
+                    docker.withRegistry(dockerRegistry,dockerCreds)
                     echo "Pushing backend image to docker hub"
                     bat "docker push thepurpleaxe/auth-backend:${backendImage}"
                 }
@@ -53,7 +53,7 @@ pipeline {
         stage('Push Frontend'){
             steps{
                 script{
-                    docker.withRegistry(${dockerRegistry}, ${dockerCreds})
+                    docker.withRegistry(dockerRegistry, dockerCreds)
                     echo "Pushing frontend image to docker hub"
                     bat "docker push thepurpleaxe/auth-frontend:${frontendImage}"
                 }
